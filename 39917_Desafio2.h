@@ -434,7 +434,7 @@ int v7(){
 
     int weight,  biggestWeight = 0;
     float counterw1=0, counterw2=0, counterw3=0, counterw4=0, counterw5=0, counter=1;
-    float height, imc, biggestIMC = 0, lowestIMC = 0;
+    float height, imc, cumIMC, biggestIMC = 0, lowestIMC = 0;
     char name[900], biggestIMCName[900], lowestIMCName[900];
 
     // we need to initialize this char in order for the while-loop work properly
@@ -463,6 +463,7 @@ int v7(){
                 imc = weight/pow(height,2);
                 biggestIMC = imc;
                 lowestIMC = imc;
+                cumIMC = imc;
 
                 //printing and counting accordingly IMC's table.
                 if(imc < 19.1){
@@ -544,6 +545,7 @@ int v7(){
 
             //keeping count of the number of people inputted
             counter += 1;
+            cumIMC += imc;
         } else{
 
             break;
@@ -553,8 +555,11 @@ int v7(){
     }
 
     //printing the results after the user has ended the inputting cycle
-    printf("The person with the highest IMC is: %s with IMC = %f \n", biggestIMCName, biggestIMC);
+    printf("\nThe person with the highest IMC is: %s with IMC = %f \n", biggestIMCName, biggestIMC);
     printf("The person with the lowest IMC is: %s with IMC = %f \n", lowestIMCName, lowestIMC);
+
+    printf("The person with the average IMC is: %.2f \n", cumIMC/counter);
+
 
     printf("There are %.2f %c people with below ideal weight\n", (counterw1/counter)*100, 37);
     printf("There are %.2f %c people with ideal weight\n", (counterw2/counter)*100, 37);

@@ -10,6 +10,6 @@ int main() {
     v5();
     v6();
     v7();
-    
+
     return 0;
 }
